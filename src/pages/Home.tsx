@@ -41,47 +41,98 @@ const Home = () => {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative bg-gradient-hero py-20 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-background/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/90 to-background/70" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8 animate-fade-in-up">
-              <div className="space-y-4">
-                <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight">
-                  Karang Taruna
-                  <span className="text-primary block">Bakti Budaya</span>
-                </h1>
-                <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
-                  Organisasi kepemudaan yang berkomitmen untuk memberdayakan masyarakat, 
-                  melestarikan budaya lokal, dan mengembangkan potensi generasi muda.
-                </p>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg" className="bg-primary hover:bg-primary/90 shadow-glow">
-                  <Link to="/categories">
-                    Lihat Kegiatan Kami
-                    <ChevronRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="border-border">
-                  <Link to="/about">Tentang Kami</Link>
-                </Button>
+          <div className="text-center space-y-8 animate-fade-in-up">
+            <div className="space-y-6">
+              <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight">
+                Karang Taruna
+                <span className="text-primary block">Bakti Budaya</span>
+              </h1>
+              <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto">
+                Organisasi kepemudaan yang berkomitmen membangun komunitas melalui kegiatan sosial, 
+                budaya, dan pemberdayaan masyarakat dengan dokumentasi lengkap perjalanan kami.
+              </p>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 shadow-glow">
+                <Link to="/categories">
+                  Lihat Kegiatan Kami
+                  <ChevronRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="border-border">
+                <Link to="/about">Tentang Kami</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Statistics Section */}
+      <section className="py-16 bg-background border-b border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center space-y-4 animate-scale-in">
+              <div className="text-4xl lg:text-5xl font-bold text-primary">500+</div>
+              <div className="space-y-2">
+                <h3 className="text-xl font-semibold text-foreground">Dokumentasi</h3>
+                <p className="text-muted-foreground">Foto dan video kegiatan lengkap</p>
               </div>
             </div>
             
-            <div className="flex justify-center lg:justify-end animate-fade-in">
-              <img
-                src="/lovable-uploads/671d1852-2c33-4e59-9371-e2fa9664b1ed.png"
-                alt="Karang Taruna Bakti Budaya Logo"
-                className="w-80 h-80 object-contain animate-float"
-              />
+            <div className="text-center space-y-4 animate-scale-in" style={{ animationDelay: "0.1s" }}>
+              <div className="text-4xl lg:text-5xl font-bold text-primary">50+</div>
+              <div className="space-y-2">
+                <h3 className="text-xl font-semibold text-foreground">Anggota</h3>
+                <p className="text-muted-foreground">Pemuda aktif dan berdedikasi</p>
+              </div>
+            </div>
+            
+            <div className="text-center space-y-4 animate-scale-in" style={{ animationDelay: "0.2s" }}>
+              <div className="text-4xl lg:text-5xl font-bold text-primary">100+</div>
+              <div className="space-y-2">
+                <h3 className="text-xl font-semibold text-foreground">Kegiatan</h3>
+                <p className="text-muted-foreground">Program sosial dan budaya</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-20 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              Tentang Karang Taruna
+            </h2>
+            <div className="max-w-4xl mx-auto space-y-6">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Karang Taruna Bakti Budaya adalah organisasi kepemudaan yang didirikan dengan semangat untuk membangun komunitas yang kuat dan berkelanjutan. Kami berkomitmen untuk mengembangkan potensi pemuda melalui berbagai kegiatan sosial, budaya, dan pemberdayaan masyarakat.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Setiap langkah perjalanan kami didokumentasikan dengan baik untuk menjadi inspirasi dan pembelajaran bagi generasi mendatang. Kami percaya bahwa transparansi dan akuntabilitas adalah kunci kesuksesan organisasi.
+              </p>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="space-y-2">
+              <div className="text-3xl font-bold text-primary">2019</div>
+              <div className="text-sm text-muted-foreground">Tahun Berdiri</div>
+            </div>
+            <div className="space-y-2">
+              <div className="text-3xl font-bold text-primary">50+</div>
+              <div className="text-sm text-muted-foreground">Anggota Aktif</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Vision, Mission, Values */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">

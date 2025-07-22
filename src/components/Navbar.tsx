@@ -23,9 +23,9 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <img 
-              src="/lovable-uploads/671d1852-2c33-4e59-9371-e2fa9664b1ed.png" 
+              src="/lovable-uploads/a71ceb76-cb3a-4db7-9c12-d0cb6e1e540f.png" 
               alt="Karang Taruna Bakti Budaya Logo" 
-              className="h-10 w-10 transition-transform duration-300 group-hover:scale-110"
+              className="h-12 w-12 transition-transform duration-300 group-hover:scale-110"
             />
             <div className="hidden sm:block">
               <h1 className="text-lg font-bold text-foreground">Karang Taruna</h1>
