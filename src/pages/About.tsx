@@ -149,10 +149,6 @@ const About = () => {
             Kami terbuka untuk kolaborasi dan partisipasi aktif dari semua pihak yang memiliki 
             visi yang sama dalam membangun masyarakat yang lebih baik.
           </p>
-          <p className="text-sm text-muted-foreground">
-            <strong>Alamat:</strong> Jl. Persandian km 6. Dsn. Puyang, Ds. Purwoharjo, 
-            Kec. Samigaluh, Kab. Kulon Progo, Prov. DIY 55673
-          </p>
         </div>
       </div>
     </div>

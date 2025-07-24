@@ -129,6 +129,14 @@ const Home = () => {
               <div className="text-3xl font-bold text-primary">50+</div>
               <div className="text-sm text-muted-foreground">Anggota Aktif</div>
             </div>
+            <div className="space-y-2">
+              <div className="text-3xl font-bold text-primary">10+</div>
+              <div className="text-sm text-muted-foreground">Program Berkelanjutan</div>
+            </div>
+            <div className="space-y-2">
+              <div className="text-3xl font-bold text-primary">20+</div>
+              <div className="text-sm text-muted-foreground">Kegiatan Tahunan</div>
+            </div>
           </div>
         </div>
       </section>
