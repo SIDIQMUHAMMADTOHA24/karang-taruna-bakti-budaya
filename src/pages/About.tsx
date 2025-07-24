@@ -146,8 +146,10 @@ const About = () => {
             Mari Bergabung Dengan Kami
           </h2>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Kami terbuka untuk kolaborasi dan partisipasi aktif dari semua pihak yang memiliki 
-            visi yang sama dalam membangun masyarakat yang lebih baik.
+            Karang Taruna bukan sekadar organisasi, ini adalah rumah untuk semua pemuda yang peduli dan ingin berkontribusi.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Bergabunglah dan jadilah bagian dari perubahan positif!
           </p>
         </div>
       </div>
