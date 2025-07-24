@@ -1,3 +1,5 @@
+
+import ScrollToTop from "./ScrollToTop"; 
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -20,6 +22,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <div className="flex flex-col min-h-screen">
           <Navbar />
           <main className="flex-1">
