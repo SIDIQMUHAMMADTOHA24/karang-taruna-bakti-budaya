@@ -91,9 +91,9 @@ const OrganizationChart = () => {
             <CardContent className="p-6">
               <div className="flex items-center space-x-6">
                 <div className="relative">
-                  <Avatar className="w-16 h-16 border-2 border-primary/20 group-hover:border-primary/40 transition-colors duration-200">
+                  <Avatar className="w-20 h-20 border-2 border-primary/20 group-hover:border-primary/40 transition-colors duration-200">
                     <AvatarImage src={user.image_url} alt={user.nama} />
-                    <AvatarFallback className="bg-primary/10 text-primary font-semibold text-lg">
+                    <AvatarFallback className="bg-primary/10 text-primary font-semibold text-xl">
                       {user.nama.split(' ').map(n => n[0]).join('').slice(0, 2)}
                     </AvatarFallback>
                   </Avatar>
@@ -113,11 +113,6 @@ const OrganizationChart = () => {
                   </p>
                 </div>
 
-                <div className="text-right">
-                  <div className="inline-flex items-center justify-center w-8 h-8 bg-primary/10 rounded-full text-primary font-bold text-sm">
-                    {user.jabatan?.level || '-'}
-                  </div>
-                </div>
               </div>
             </CardContent>
           </Card>
