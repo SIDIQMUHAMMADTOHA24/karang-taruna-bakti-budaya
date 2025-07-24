@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Target, Eye, Heart, Users, Award, Globe } from "lucide-react";
+import OrganizationChart from "@/components/OrganizationChart";
 
 const About = () => {
   return (
@@ -133,6 +134,11 @@ const About = () => {
             </div>
           </div>
         </div>
+
+        {/* Organization Chart */}
+        <section className="py-20">
+          <OrganizationChart />
+        </section>
 
         {/* Contact Information */}
         <div className="bg-muted/30 rounded-lg p-8 text-center animate-fade-in">
