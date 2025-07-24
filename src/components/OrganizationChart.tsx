@@ -31,7 +31,8 @@ const OrganizationChart = () => {
               nama,
               level
             )
-          `);
+          `)
+          .order('jabatan(level)', { ascending: true });
 
         if (error) throw error;
         setUsers(data || []);
@@ -81,38 +82,41 @@ const OrganizationChart = () => {
         </p>
       </div>
 
-      <div className="space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {users.map((user, index) => (
           <Card 
             key={user.id} 
-            className="group bg-gradient-glass backdrop-blur-sm border-border/50 hover:border-primary/20 hover:shadow-glass transition-all duration-300 hover:-translate-y-1 animate-slide-up"
+            className="group bg-gradient-card shadow-card hover:shadow-elegant border-border/50 hover:border-primary/30 transition-all duration-300 hover:-translate-y-2 animate-scale-in overflow-hidden"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
-            <CardContent className="p-6">
-              <div className="flex items-center space-x-6">
-                <div className="relative">
-                  <Avatar className="w-20 h-20 border-2 border-primary/20 group-hover:border-primary/40 transition-colors duration-200">
-                    <AvatarImage src={user.image_url} alt={user.nama} />
-                    <AvatarFallback className="bg-primary/10 text-primary font-semibold text-xl">
+            <CardContent className="p-6 text-center">
+              <div className="space-y-4">
+                <div className="relative inline-block">
+                  <Avatar className="w-24 h-24 border-3 border-primary/20 group-hover:border-primary/50 transition-all duration-300 group-hover:scale-105">
+                    <AvatarImage 
+                      src={user.image_url} 
+                      alt={user.nama}
+                      className="object-cover"
+                    />
+                    <AvatarFallback className="bg-gradient-primary text-primary-foreground font-bold text-2xl">
                       {user.nama.split(' ').map(n => n[0]).join('').slice(0, 2)}
                     </AvatarFallback>
                   </Avatar>
                   {user.jabatan?.level === 1 && (
-                    <div className="absolute -top-1 -right-1 w-6 h-6 bg-primary rounded-full flex items-center justify-center animate-bounce-subtle">
-                      <Trophy className="h-3 w-3 text-primary-foreground" />
+                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-accent rounded-full flex items-center justify-center animate-pulse border-2 border-background">
+                      <Trophy className="h-4 w-4 text-accent-foreground" />
                     </div>
                   )}
                 </div>
                 
-                <div className="flex-1 space-y-1">
-                  <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors duration-200">
+                <div className="space-y-2">
+                  <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-200">
                     {user.nama}
                   </h3>
-                  <p className="text-muted-foreground text-sm uppercase tracking-wider">
+                  <p className="text-muted-foreground text-sm font-medium px-3 py-1 bg-muted/50 rounded-full">
                     {user.jabatan?.nama || 'Anggota'}
                   </p>
                 </div>
-
               </div>
             </CardContent>
           </Card>
