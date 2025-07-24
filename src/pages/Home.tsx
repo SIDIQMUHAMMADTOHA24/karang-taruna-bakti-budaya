@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import CategoryCard from "@/components/CategoryCard";
-
+import OrganizationChart from "@/components/OrganizationChart";
 import RatingSystem from "@/components/RatingSystem";
 import { supabase } from "@/integrations/supabase/client";
 import { ChevronRight, Target, Eye, Heart } from "lucide-react";
@@ -231,6 +231,12 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Organization Chart */}
+      <section className="py-20 bg-background">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <OrganizationChart />
+        </div>
+      </section>
 
       {/* Rating System */}
       <section className="py-20 bg-muted/30">
