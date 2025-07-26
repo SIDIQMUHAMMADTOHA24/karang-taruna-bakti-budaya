@@ -1,6 +1,10 @@
-import { MapPin, Phone, Mail, Instagram, Facebook } from "lucide-react";
+import { MapPin, Phone, Mail, Instagram, Facebook, Youtube } from "lucide-react";
+import { PiTiktokLogo } from "react-icons/pi";
+import useOrganizationDetails from "./OrganizationDetails";
 
 const Footer = () => {
+  const { details, loading } = useOrganizationDetails();
+
   return (
     <footer className="bg-gradient-card border-t border-border mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -22,29 +26,37 @@ const Footer = () => {
               Organisasi kepemudaan yang bergerak dalam pemberdayaan masyarakat, 
               pelestarian budaya, dan pengembangan potensi generasi muda.
             </p>
+            {details?.masa_jabatan && (
+              <p className="text-xs text-muted-foreground">
+                Periode: {details.masa_jabatan}
+              </p>
+            )}
           </div>
 
           {/* Contact Information */}
           <div className="space-y-4">
             <h4 className="text-lg font-semibold text-foreground">Kontak Kami</h4>
             <div className="space-y-3">
-              <div className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <p className="text-sm text-muted-foreground">
-                  Jl. Persandian km 6.<br />
-                  Dsn. Puyang, Ds. Purwoharjo,<br />
-                  Kec. Samigaluh, Kab. Kulon Progo,<br />
-                  Prov. DIY 55673
-                </p>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-primary" />
-                <p className="text-sm text-muted-foreground">+62 xxx-xxxx-xxxx</p>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-primary" />
-                <p className="text-sm text-muted-foreground">info@karangtaruna-baktibudaya.org</p>
-              </div>
+              {details?.alamat && (
+                <div className="flex items-start space-x-3">
+                  <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <p className="text-sm text-muted-foreground whitespace-pre-line">
+                    {details.alamat}
+                  </p>
+                </div>
+              )}
+              {details?.no_telp && (
+                <div className="flex items-center space-x-3">
+                  <Phone className="h-5 w-5 text-primary" />
+                  <p className="text-sm text-muted-foreground">{details.no_telp}</p>
+                </div>
+              )}
+              {details?.email && (
+                <div className="flex items-center space-x-3">
+                  <Mail className="h-5 w-5 text-primary" />
+                  <p className="text-sm text-muted-foreground">{details.email}</p>
+                </div>
+              )}
             </div>
           </div>
 
@@ -52,18 +64,46 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold text-foreground">Ikuti Kami</h4>
             <div className="flex space-x-4">
-              <a 
-                href="#" 
-                className="p-2 bg-primary/10 text-primary rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a 
-                href="#" 
-                className="p-2 bg-primary/10 text-primary rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
+              {details?.instagram_url && (
+                <a 
+                  href={details.instagram_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-primary/10 text-primary rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
+                >
+                  <Instagram className="h-5 w-5" />
+                </a>
+              )}
+              {details?.facebook_url && (
+                <a 
+                  href={details.facebook_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-primary/10 text-primary rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
+                >
+                  <Facebook className="h-5 w-5" />
+                </a>
+              )}
+                {details?.tiktok_url && (
+                <a 
+                  href={details.tiktok_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-primary/10 text-primary rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
+                >
+                  <PiTiktokLogo className="h-5 w-5" />
+                </a>
+              )}
+              {details?.yt_url && (
+                <a 
+                  href={details.yt_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-primary/10 text-primary rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
+                >
+                  <Youtube className="h-5 w-5" />
+                </a>
+              )}
             </div>
             <p className="text-sm text-muted-foreground">
               Tetap terhubung dengan kegiatan dan program terbaru kami melalui media sosial.

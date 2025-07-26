@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { supabase } from "@/integrations/supabase/client";
 import { Users, Trophy } from "lucide-react";
+import useOrganizationDetails from "./OrganizationDetails";
 
 interface User {
   id: number;
@@ -17,6 +18,7 @@ interface User {
 const OrganizationChart = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
+  const { details, loading: detailsLoading } = useOrganizationDetails();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -78,7 +80,8 @@ const OrganizationChart = () => {
           Struktur Organisasi
         </h2>
         <p className="text-muted-foreground">
-          Pengurus Karang Taruna Bakti Budaya periode 2023-2025
+           Pengurus Karang Taruna Bakti Budaya periode{" "}
+          {detailsLoading ? "2023-2025" : details?.masa_jabatan || "-"}
         </p>
       </div>
 
