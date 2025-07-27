@@ -165,6 +165,7 @@ const RatingSystem = () => {
               placeholder="Ceritakan pengalaman Anda dengan kegiatan kami..."
               value={newRating.deskripsi}
               onChange={(e) => setNewRating(prev => ({ ...prev, deskripsi: e.target.value }))}
+              maxLength={100}
               className="min-h-[100px] bg-background/50 border-border/50 focus:border-primary/50"
             />
           </div>
