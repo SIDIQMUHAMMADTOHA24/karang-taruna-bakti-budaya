@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { Star, MessageSquare, Send, Calendar } from "lucide-react";
 import { toast } from "sonner";
+import { escapeInput, containsDangerousInput} from "@/utils/SanitationInput";
 
 interface Rating {
   id: number;
@@ -43,8 +44,16 @@ const RatingSystem = () => {
   };
 
   const submitRating = async () => {
+    const cleanDescription = escapeInput(newRating.deskripsi);
+    const isUnsafe = containsDangerousInput(newRating.deskripsi);
+
     if (newRating.stars === 0) {
       toast.error("Silakan pilih rating bintang");
+      return;
+    }
+
+    if (isUnsafe) {
+      toast.error("Input mengandung konten berbahaya");
       return;
     }
 
@@ -54,7 +63,7 @@ const RatingSystem = () => {
         .from("rating")
         .insert([{
           stars: newRating.stars,
-          deskripsi: newRating.deskripsi.trim() || null
+          deskripsi: cleanDescription || null
         }]);
 
       if (error) throw error;
