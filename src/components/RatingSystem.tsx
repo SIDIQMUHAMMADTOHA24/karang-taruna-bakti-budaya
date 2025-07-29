@@ -95,15 +95,23 @@ const RatingSystem = () => {
     ));
   };
 
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("id-ID", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit"
-    });
-  };
+  function formatDate(dateString) {
+  const utcDate = new Date(dateString);
+  // Tambahkan offset 7 jam (dalam ms)
+  const jakartaDate = new Date(utcDate.getTime() + 7 * 60 * 60 * 1000);
+
+  return jakartaDate.toLocaleString('id-ID', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  });
+}
+
+
+
 
   const averageRating = ratings.length > 0 
     ? ratings.reduce((sum, rating) => sum + rating.stars, 0) / ratings.length 
