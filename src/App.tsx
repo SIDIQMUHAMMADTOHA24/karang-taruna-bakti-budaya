@@ -1,5 +1,3 @@
-
-import ScrollToTop from "./ScrollToTop"; 
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,8 +9,10 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Categories from "./pages/Categories";
 import CategoryDetail from "./pages/CategoryDetail";
+import ActivityDetail from "./pages/ActivityDetail";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +31,7 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="/categories" element={<Categories />} />
               <Route path="/categories/:id" element={<CategoryDetail />} />
+              <Route path="/activities/:id" element={<ActivityDetail />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

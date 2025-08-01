@@ -2,9 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, Users } from "lucide-react";
 import { format } from "date-fns";
-import { id } from "date-fns/locale";
+import { id as locale } from "date-fns/locale";
+import { Link } from "react-router-dom";
 
 interface ActivityCardProps {
+  id: number;
   title: string;
   description: string;
   date?: string;
@@ -13,9 +15,10 @@ interface ActivityCardProps {
   image_url?: string;
 }
 
-const ActivityCard = ({ title, description, date, location, people, image_url }: ActivityCardProps) => {
+const ActivityCard = ({ id, title, description, date, location, people, image_url }: ActivityCardProps) => {
   return (
-    <Card className="group overflow-hidden bg-gradient-card shadow-card hover:shadow-elegant transition-all duration-300 hover:-translate-y-1 border border-border/50">
+    <Link to={`/activities/${id}`}>
+      <Card className="group overflow-hidden bg-gradient-card shadow-card hover:shadow-elegant transition-all duration-300 hover:-translate-y-1 border border-border/50 cursor-pointer">
       <div className="aspect-video overflow-hidden">
         <img
           src={image_url || "/placeholder.svg"}
@@ -28,14 +31,14 @@ const ActivityCard = ({ title, description, date, location, people, image_url }:
           {title}
         </h3>
         <p className="text-muted-foreground text-sm mb-4 line-clamp-3 leading-relaxed">
-          {description}
+          <div dangerouslySetInnerHTML={{ __html: description }} />
         </p>
         
         <div className="space-y-2">
           {date && (
             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
               <Calendar className="h-4 w-4 text-primary" />
-              <span>{format(new Date(date), "dd MMMM yyyy", { locale: id })}</span>
+              <span>{format(new Date(date), "dd MMMM yyyy", { locale })}</span>
             </div>
           )}
           
@@ -55,6 +58,7 @@ const ActivityCard = ({ title, description, date, location, people, image_url }:
         </div>
       </CardContent>
     </Card>
+    </Link>
   );
 };
 
