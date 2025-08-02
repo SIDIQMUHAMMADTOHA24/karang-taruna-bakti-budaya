@@ -12,8 +12,8 @@ import CategoryDetail from "./pages/CategoryDetail";
 import ActivityDetail from "./pages/ActivityDetail";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import Gallery from "./pages/Gallery";
 import ScrollToTop from "./ScrollToTop";
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -33,6 +33,7 @@ const App = () => (
               <Route path="/categories/:id" element={<CategoryDetail />} />
               <Route path="/activities/:id" element={<ActivityDetail />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/gallery" element={<Gallery />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

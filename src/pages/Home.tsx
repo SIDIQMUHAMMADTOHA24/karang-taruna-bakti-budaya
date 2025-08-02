@@ -15,9 +15,17 @@ interface Category {
   image_url?: string;
 }
 
+interface GalleryItem {
+  id: number;
+  image: string;
+  created_at: string;
+}
+
 const Home = () => {
   const [categories, setCategories] = useState<Category[]>([]);
+  const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [galleryLoading, setGalleryLoading] = useState(true);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -36,7 +44,25 @@ const Home = () => {
       }
     };
 
+    const fetchGalleryItems = async () => {
+      try {
+        const { data, error } = await (supabase as any)
+          .from("gallery")
+          .select("*")
+          .order("created_at", { ascending: false })
+          .limit(3);
+
+        if (error) throw error;
+        setGalleryItems(data || []);
+      } catch (error) {
+        console.error("Error fetching gallery items:", error);
+      } finally {
+        setGalleryLoading(false);
+      }
+    };
+
     fetchCategories();
+    fetchGalleryItems();
   }, []);
 
   return (
@@ -233,6 +259,63 @@ const Home = () => {
               <Link to="/categories">
                 Lihat Semua Kategori
                 <ChevronRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Preview Section */}
+      <section className="py-20 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              Galeri Foto
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Dokumentasi visual kegiatan dan momen berharga Karang Taruna Bakti Budaya
+            </p>
+          </div>
+
+          {galleryLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="animate-pulse">
+                  <div className="bg-muted rounded-lg aspect-square" />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <>
+              {galleryItems.length > 0 && (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 animate-fade-in-up">
+                  {galleryItems.map((item, index) => (
+                    <div 
+                      key={item.id} 
+                      className="overflow-hidden rounded-lg shadow-card hover:shadow-elegant transition-all duration-300 cursor-pointer group"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                      onClick={() => window.open(item.image, '_blank')}
+                    >
+                      <div className="aspect-square overflow-hidden">
+                        <img
+                          src={item.image}
+                          alt={`Gallery preview ${item.id}`}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+
+          <div className="text-center animate-fade-in">
+            <Button asChild variant="outline" size="lg" className="border-border hover:bg-primary hover:text-primary-foreground">
+              <Link to="/gallery">
+                Lihat Galeri Lengkap
+                 <ChevronRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
           </div>

@@ -11,6 +11,7 @@ const Navbar = () => {
     { name: "Beranda", href: "/" },
     { name: "Tentang Kami", href: "/about" },
     { name: "Kategori", href: "/categories" },
+    { name: "Galeri", href: "/gallery" },
     { name: "Kontak", href: "/contact" },
   ];
 
